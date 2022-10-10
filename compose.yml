@@ -1,0 +1,15 @@
+services:
+  frontend_dev:
+    container_name: frontend_dev_container
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    volumes:
+      - ./frontend/src:/app/src
+    environment:
+      - NODE_ENV=development
+      # - CHOKIDAR_USEPOLLING=true // depricated from react-script@5.0.0
+      - WATCHPACK_POLLING=true
+    command: [npm, start]
+    ports:
+      - 53000:3000
