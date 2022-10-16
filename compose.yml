@@ -5,24 +5,23 @@ services:
       context: .
       dockerfile: ./frontend/Dockerfile
     volumes:
-      - ./frontend/src:/app/src
+      - ./frontend:/app
     environment:
       - NODE_ENV=development
       # - CHOKIDAR_USEPOLLING=true # depricated from react-script@5.0.0
       - WATCHPACK_POLLING=true # use WATCHPACK_POLLING from react-script@5.0.0
     command: [npm, start]
     ports:
-      - 53000:3000
+      - 53001:3000
   backend_dev:
     container_name: backend_dev
     build:
       context: .
       dockerfile: ./backend/Dockerfile
     volumes:
-      - ./backend/dist:/app/dist
-      - ./backend/src:/app/src
+      - ./backend:/app
     environment:
       - NODE_ENV=development
     command: [sh, build.sh]
     ports:
-      - 53001:3000
+      - 53000:3000

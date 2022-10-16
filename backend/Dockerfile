@@ -1,4 +1,4 @@
-FROM node:18.10-bullseye-slim as frontend
+FROM node:18.10
 WORKDIR /app
 
 ENV CI=true
